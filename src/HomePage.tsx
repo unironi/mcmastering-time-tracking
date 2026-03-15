@@ -13,7 +13,7 @@ export default function HomePage() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center m-4">
             <h1 className="mb-4">Your Entries</h1>
             {addEntry && <AddEntry addNewEntry={newEntry}/>}
             {!addEntry && entries.map((entry) => (
@@ -21,7 +21,7 @@ export default function HomePage() {
             ))}
             <button 
                 onClick={() => setAddEntry(!addEntry)}
-                className="bg-yellow-500 hover:bg-yellow-700 font-bold px-6 py-4 rounded-full m-4 text-2xl"
+                className="sticky bottom-10 bg-yellow-500 hover:bg-yellow-700 font-bold px-6 py-4 rounded-full m-4 text-2xl"
             >
                 {addEntry? "×" : "+"}
             </button>

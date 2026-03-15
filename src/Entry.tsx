@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type EntryProps = {
+export type EntryProps = {
     category: string,
     role: string,
     hours: number
@@ -23,24 +23,38 @@ export default function Entry({ category, role, hours }: EntryProps) {
     }
 
     return (
-        <div className="flex flex-row">
-            <div className="flex flex-col">
-                <h4 className="text-sm font-medium">{category}</h4>
-                <h2 className="text-lg font-semibold">{role}</h2>
+        <div className="w-full max-w-2xl mx-auto p-3 mb-3 bg-white rounded-xl">
+            <div className="grid grid-cols-2 items-center">
+                <div className="flex flex-col">
+                    <h4 className="text-sm font-medium truncate">{category}</h4>
+                    <h2 className="text-lg font-semibold truncate">{role}</h2>
+                </div>
+                
+                <div className="flex items-center justify-end gap-2">
+                    <button
+                        onClick={handleSubtract}
+                        className="px-4 py-1 bg-gray-200 rounded"
+                        aria-label="decrease hours"
+                    >
+                        -
+                    </button>
+                    <input
+                        type="number"
+                        value={newHours}
+                        onChange={handleChange}
+                        className=" py-1 w-12 text-center border rounded"
+                    />
+                    <button
+                        onClick={handleAdd}
+                        className="px-4 py-1 bg-blue-200 rounded"
+                        aria-label="increase hours"
+                    >
+                        +
+                    </button>
+                </div>
+                
             </div>
-            
-            <button onClick={handleSubtract} className="px-2 py-1 bg-gray-200 rounded">
-                -
-            </button>
-            <input
-                type="number"
-                value={newHours}
-                onChange={handleChange}
-                className="w-12 text-center border rounded"
-            />
-            <button onClick={handleAdd} className="px-2 py-1 bg-gray-200 rounded">
-                +
-            </button>
         </div>
+        
     );
 }
